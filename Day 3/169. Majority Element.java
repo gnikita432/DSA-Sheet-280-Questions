@@ -1,5 +1,28 @@
 // 169. Majority Element
 
+//Approach 2 : Optimal solution O(n) O(1)
+class Solution {
+    public int majorityElement(int[] nums) {
+     
+        int ele = 0 , count = 0;
+        int i=0;
+        while(i<nums.length){
+            if(count == 0){
+                ele = nums[i];
+                count++;
+            }else if(ele==nums[i]){
+                count++;
+            }else{
+                count--;
+            }
+            i++;
+        }
+     return ele;
+    }
+}
+
+// Approach 1 : Brute
+
 //Approach 1 brute force tc: O(nlogn) sc:O(n)
 class Solution {
     public int majorityElement(int[] nums) {
