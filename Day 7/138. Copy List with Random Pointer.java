@@ -6,9 +6,6 @@
 class Solution {
     public Node copyRandomList(Node head) {
         
-        //Edge Case
-        
-        
         // Step 1: Create the new copy nodes and insert them between the orginal nodes
         Node itr = head;
         Node front = head;
@@ -43,5 +40,34 @@ class Solution {
         }
              
         return clonedlist.next ;
+    }
+}
+
+
+// ----------------------Brute Force HAshMap Approach -O(n) O(n)--------------------------
+
+class Solution {
+    public Node copyRandomList(Node head) {
+      
+        // Creating a hasmap of actual node and a duplicate/copy node
+        HashMap<Node, Node> hm = new HashMap<>();
+        
+        // Adding the node and creating a copy node in hashmap
+        Node itr = head;
+        while(itr != null){
+            hm.put(itr, new Node(itr.val));
+            itr = itr.next;
+        }
+             
+        //deep copy using hash table
+        Node curr = head;
+        
+        while(curr != null){
+            hm.get(curr).next = hm.get(curr.next);
+            hm.get(curr).random = hm.get(curr.random);
+            curr = curr.next;
+        }
+   
+        return hm.get(head);
     }
 }
