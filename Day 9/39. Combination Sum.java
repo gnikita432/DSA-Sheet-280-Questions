@@ -1,5 +1,38 @@
 // 39. Combination Sum
 
+// Pick and Non Pick Method(Optimal method) ---------------------------------------------
+class Solution {
+    
+    List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        
+        combinations(candidates, 0, target, new ArrayList<>());
+        return result;
+    }
+    
+    public void combinations(int[] candidates, int idx, int target, List<Integer> res){
+        
+        if(idx == candidates.length){ 
+            if(target == 0){
+                result.add(new ArrayList(res));
+            }
+            return;
+        }
+       if(candidates[idx]<=target){
+        //Pick - we wont be changing index as we can take a certain element any number of times
+            res.add(candidates[idx]);
+            combinations(candidates, idx, target-candidates[idx], res);
+            res.remove(res.size()-1);
+       }
+        //Non Pick - if we are not picking the element than we are going to the next element so target will be the same
+            combinations(candidates, idx+1, target, res);
+    }
+}
+// Time complexity: O( 2^ target *k)
+// Space Complexity : O(n*k) - hypothetical
+
+
+
 // Not that Optimal----------------------------------------------------------------------
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target){
