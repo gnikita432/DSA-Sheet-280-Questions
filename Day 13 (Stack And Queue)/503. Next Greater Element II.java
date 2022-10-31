@@ -1,5 +1,37 @@
 // 503. Next Greater Element II
 
+//Approach 3: Optimal Approach
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+        int [] res = new int[nums.length];
+        Stack<Integer> st = new Stack<Integer>(); 
+        for(int i=nums.length-1; i>=0; i--){
+            // pop
+            while(st.size()>0 && st.peek()<nums[i]){
+                st.pop();
+            }
+            //Push
+            st.push(nums[i]);
+        }
+        for(int i=nums.length-1; i>=0; i--){
+            // Fill the ans
+            //pop
+            while(st.size()>0 && st.peek()<=nums[i]){
+                st.pop();
+            }
+            //a
+            if(st.size()==0){
+                res[i] = -1;
+            }else{
+                res[i] = st.peek();
+            }
+            //Push
+            st.push(nums[i]);
+        }
+        return res;
+    }
+}
+
 
 //Apprach 2 : A little bit optimized but not so good approach
 class Solution {
