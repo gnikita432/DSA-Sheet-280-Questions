@@ -54,36 +54,36 @@ class Solution {
 
 }
 
-// 1. Find out all substrings and then check for the longest palindrome in that. -TLE
-//  public String longestPalindrome(String s) {
+1. Find out all substrings and then check for the longest palindrome in that. -TLE
+ public String longestPalindrome(String s) {
         
-//         int len = 0;
-//         String ans = "";
+        int len = 0;
+        String ans = "";
 
-//         for(int i = 0 ; i<s.length() ; i++){
-//             for(int j = i ; j< s.length(); j++){
-//                String str = s.substring(i, j+1);
-//                 if(palindrome(str)){
-//                     int temp = j+1 - i;
-//                     if(temp>len){
-//                         len = temp;
-//                         ans = str;
-//                     }
-//                 }
-//             }
-//         }
-//         return ans;
-//     }
+        for(int i = 0 ; i<s.length() ; i++){
+            for(int j = i ; j< s.length(); j++){
+               String str = s.substring(i, j+1);
+                if(palindrome(str)){
+                    int temp = j+1 - i;
+                    if(temp>len){
+                        len = temp;
+                        ans = str;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
     
-//     public boolean palindrome(String s){
-//         int i = 0;
-//         int j = s.length()-1;
-//         while(i<j){
-//             if(s.charAt(i)!= s.charAt(j)){
-//                 return false;
-//             }
-//             i++;
-//             j--;
-//         }
-//         return true;
-//     }
+    public boolean palindrome(String s){
+        int i = 0;
+        int j = s.length()-1;
+        while(i<j){
+            if(s.charAt(i)!= s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
