@@ -15,7 +15,6 @@ class Solution {
         for(int i=0;i<n.length;i++)n[i]=m.get(c[i]);
         int sum=0;
         for(int i=0;i<n.length;i++)sum = i==c.length-1||n[i]>=n[i+1]?sum+n[i]:sum-n[i];
-        return sum;
-        
+        return sum;    
     }
 }
